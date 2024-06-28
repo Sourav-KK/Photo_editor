@@ -3,6 +3,7 @@ interface Btn_optionsI {
   style: React.CSSProperties;
   hoverStyle: React.CSSProperties;
   clickHandler: () => void;
+  state: boolean;
 }
 
 export type { Btn_optionsI };

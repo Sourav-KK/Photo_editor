@@ -17,12 +17,15 @@ const Img_section = ({
   return (
     <>
       {inputFile ? (
-        <img
-          src={URL.createObjectURL(inputFile)}
-          alt=""
-          className="img-main"
-          style={styles()}
-        />
+        <div>
+          <img
+            id="edited-img"
+            src={URL.createObjectURL(inputFile)}
+            alt=""
+            className="img-main"
+            style={styles()}
+          />
+        </div>
       ) : (
         <>
           <input

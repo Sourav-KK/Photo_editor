@@ -15,7 +15,10 @@ const Slider = ({
   handleChange: ({ target }: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
   return (
-    <div className="slider-container">
+    <div
+      className="slider-container"
+      title={!isFile ? "Choose and image" : "Slide to apply filter"}
+    >
       <p>
         {isFile ? (
           <>
@@ -23,7 +26,7 @@ const Slider = ({
             {unit}
           </>
         ) : (
-          "0%"
+          <span className="slider-span">0%</span>
         )}
       </p>
       <input
@@ -34,7 +37,6 @@ const Slider = ({
         max={maxVal}
         min={minVal}
         disabled={!isFile}
-        title={!isFile ? "Choose and image" : "Slide to apply filter"}
         onChange={handleChange}
       />
     </div>

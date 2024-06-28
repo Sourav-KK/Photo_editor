@@ -15,6 +15,7 @@ const Btns = ({ btns }: { btns: Btn_optionsI[] }) => {
           onClick={item.clickHandler}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
+          disabled={!item.state}
         >
           {item.name}
         </button>

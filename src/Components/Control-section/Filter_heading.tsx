@@ -1,6 +1,6 @@
 const Filter_heading = () => {
   return (
-    <div className="heading-container">
+    <div className="filter-heading-container">
       <h3>filters</h3>
     </div>
   );

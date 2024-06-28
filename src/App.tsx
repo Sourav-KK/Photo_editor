@@ -7,16 +7,15 @@ import Img_section from "./Components/ImageSection/Img_section";
 import Btns from "./Components/Btns";
 import Filter_heading from "./Components/Control-section/Filter_heading";
 import { DEFAULT_OPTIONS, DEFAULT_OPTIONSI } from "./Utilities/Default_Options";
-import { Btn_optionsI } from "./Utilities/Interfaces";
+import useBtn from "./Hooks/useBtn";
 
 function App() {
   const [file, setFile] = useState<File | null>();
+  const [btnState, setBtnState] = useState<boolean>(false);
   const inputFileRef = useRef<HTMLInputElement | null>(null);
   const [options, setOptions] = useState<DEFAULT_OPTIONSI[]>(DEFAULT_OPTIONS);
   const [selectedOptionIndex, setSelectedOptionIndex] = useState<number>(0);
   const selectedOption = options[selectedOptionIndex];
-
-  console.log("selectedOptionIndex:", selectedOptionIndex);
 
   const handleUploadImage = () => {
     if (!inputFileRef.current) return;
@@ -29,6 +28,7 @@ function App() {
     if (!event.target.files) {
       return;
     }
+    setBtnState(true);
     setFile(event.target.files[0]);
   };
 
@@ -58,6 +58,7 @@ function App() {
 
   const handleUnmount = () => {
     setFile(null);
+    setBtnState(false);
   };
 
   const handleReset = () => {
@@ -70,59 +71,36 @@ function App() {
   };
 
   const handleDownload = () => {
-    if (!file) return;
-    const fileURL = URL.createObjectURL(file);
-    const link = document.createElement("a");
+    if (!file) return; // No image to download
+    const imageStyle = getImageStyle(); // Get the CSS filter style
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
 
-    link.href = fileURL;
-    link.download = "edited_image";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (!ctx) return;
+
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.filter = imageStyle.filter; // Apply the filter style
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+
+      // Trigger download
+      const link = document.createElement("a");
+      link.download = "edited-image.jpg"; // Set the desired filename
+      link.href = canvas.toDataURL("image/jpeg", 0.8);
+      link.click();
+    };
   };
-
-  const Btn_options: Btn_optionsI[] = [
-    {
-      name: "Reset",
-      style: {
-        backgroundColor: "#E264B2",
-      },
-      hoverStyle: {
-        backgroundColor: "#B7267F",
-      },
-      clickHandler: handleReset,
-    },
-    {
-      name: "Unmount",
-      style: {
-        backgroundColor: "#E264B2",
-      },
-      hoverStyle: {
-        backgroundColor: "#B7267F",
-      },
-      clickHandler: handleUnmount,
-    },
-    {
-      name: "Download",
-      style: {
-        backgroundColor: "#3888CA",
-      },
-      hoverStyle: {
-        backgroundColor: "#1E659F",
-      },
-      clickHandler: handleDownload,
-    },
-    {
-      name: "Upload",
-      style: {
-        backgroundColor: "#38CA38",
-      },
-      hoverStyle: {
-        backgroundColor: "#0D870D",
-      },
-      clickHandler: handleUploadImage,
-    },
-  ];
+  const Fn_btns = useBtn({
+    handleReset,
+    handleUnmount,
+    handleDownload,
+    handleUploadImage,
+    btnState,
+  });
 
   return (
     <div className="container">
@@ -167,7 +145,7 @@ function App() {
         </div>
 
         <div className="fn-btn-container">
-          <Btns btns={Btn_options} />
+          <Btns btns={Fn_btns} />
         </div>
       </div>
     </div>

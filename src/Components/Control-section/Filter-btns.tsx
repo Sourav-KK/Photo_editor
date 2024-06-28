@@ -10,7 +10,6 @@ const Filter_btns = ({
   setSelectedOptionIndex: React.Dispatch<React.SetStateAction<number>>;
   isFile: File | null | undefined;
 }) => {
-
   const handleSetIndex = (index: number) => {
     setSelectedOptionIndex(index);
   };
@@ -26,7 +25,7 @@ const Filter_btns = ({
           }`}
           name={elem.name}
           onClick={() => handleSetIndex(index)}
-          disabled={!isFile }
+          disabled={!isFile}
         >
           {elem.name}
         </button>
