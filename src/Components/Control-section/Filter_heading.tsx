@@ -1,4 +1,3 @@
-
 const Filter_heading = () => {
   return (
     <div className="heading-container">

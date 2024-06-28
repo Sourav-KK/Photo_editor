@@ -1,9 +1,33 @@
-import { DEFAULT_OPTIONS } from "../../Utilities/Default_Options";
-const Filter_btns = () => {
+import { DEFAULT_OPTIONSI } from "../../Utilities/Default_Options";
+const Filter_btns = ({
+  options,
+  selectedOptionIndex,
+  setSelectedOptionIndex,
+  isFile,
+}: {
+  options: DEFAULT_OPTIONSI[];
+  selectedOptionIndex: number;
+  setSelectedOptionIndex: React.Dispatch<React.SetStateAction<number>>;
+  isFile: File | null | undefined;
+}) => {
+
+  const handleSetIndex = (index: number) => {
+    setSelectedOptionIndex(index);
+  };
+
   return (
     <div className="btn-holder">
-      {DEFAULT_OPTIONS.map((elem, index) => (
-        <button type="button" className="filter-btn" key={index}>
+      {options.map((elem, index) => (
+        <button
+          key={index}
+          type="button"
+          className={`filter-btn ${
+            index === selectedOptionIndex ? "active" : ""
+          }`}
+          name={elem.name}
+          onClick={() => handleSetIndex(index)}
+          disabled={!isFile }
+        >
           {elem.name}
         </button>
       ))}
