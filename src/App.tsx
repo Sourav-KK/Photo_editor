@@ -29,6 +29,7 @@ function App() {
       return;
     }
     setBtnState(true);
+    console.log("event.target.files[0]:", event.target.files[0]);
     setFile(event.target.files[0]);
   };
 

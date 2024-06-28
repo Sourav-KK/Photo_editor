@@ -32,6 +32,7 @@ const Img_section = ({
             ref={inputFileRef}
             style={{ display: "none" }}
             onChange={handleFileUploadChange}
+            accept="image/x-png,image/jpg,image/jpeg"
           />
           <div
             className="input-container"
