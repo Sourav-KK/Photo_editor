@@ -21,7 +21,6 @@ const Img_section = ({
           <img
             id="edited-img"
             src={URL.createObjectURL(inputFile)}
-            alt=""
             className="img-main"
             style={styles()}
           />

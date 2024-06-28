@@ -24,7 +24,7 @@ h1 {
   text-align: center;
   text-transform: uppercase;
   font-family: monospace;
-  color: #0fe866;
+  color: #e80fa0;
 }
 
 h3 {
@@ -127,6 +127,7 @@ h3 {
   display: flex;
   justify-content: space-evenly;
   padding: 15px;
+  border: 1px solid #cdcfd2;
 }
 
 .orientation-btn {
@@ -141,13 +142,6 @@ h3 {
 .orientation-btn:hover {
   background-color: rgb(212, 212, 230);
 }
-
-/* 
-.img-container {
-  display: flex;
-  justify-items: center;
-  align-items: center;
-} */
 
 .input-container {
   display: flex;
@@ -211,4 +205,37 @@ h3 {
 
 .reset-btn:hover {
   background-color: rgb(183, 38, 127);
+}
+
+
+
+@media only screen and (max-width: 640px) {
+  h1 {
+    font-size: medium;
+    font-weight: 300;
+  }
+
+  .inner-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .filter-heading-container {
+    font-size: small;
+  }
+
+  .filter-btn {
+    font-size: small;
+  }
+
+  .fn-btn-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
 }
