@@ -17,7 +17,6 @@ button {
   cursor: pointer;
   border-radius: 3px;
   transition: background-color 150ms;
-
 }
 
 h1 {
@@ -30,7 +29,8 @@ h1 {
 h3 {
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   color: #3242d4;
   border: 1px solid #c8d7e8;
 }
@@ -71,13 +71,13 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-
 }
 
 .btn-holder {
   padding: 4px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   gap: 6px;
   border: 1px solid #aac9de;
 }
@@ -88,7 +88,7 @@ h3 {
   padding: 5px;
   border-radius: 2px;
   font-size: medium;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-weight: 500;
 }
 
@@ -136,7 +136,8 @@ h3 {
   color: aliceblue;
   font-size: medium;
   padding: 10px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .orientation-btn:hover {
@@ -162,13 +163,12 @@ h3 {
   height: 100%;
 }
 
-
-
 .other-btn {
   color: aliceblue;
   font-size: medium;
   padding: 10px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .upload-btn {
@@ -176,7 +176,8 @@ h3 {
   color: aliceblue;
   font-size: medium;
   padding: 10px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .upload-btn:hover {
@@ -188,7 +189,8 @@ h3 {
   color: aliceblue;
   font-size: medium;
   padding: 10px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .download-btn:hover {
@@ -200,14 +202,13 @@ h3 {
   color: aliceblue;
   font-size: medium;
   padding: 10px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .reset-btn:hover {
   background-color: rgb(183, 38, 127);
 }
-
-
 
 @media only screen and (max-width: 640px) {
   h1 {
